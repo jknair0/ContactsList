@@ -6,7 +6,7 @@ import {
 import {
   Text, StyleSheet, Alert,
 } from 'react-native';
-import ContactEntity from './contact/ContactEntity';
+import ContactEntity from '../contact/ContactEntity';
 
 export default class AddContactScreen extends React.Component {
     static navigationOptions = {

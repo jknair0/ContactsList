@@ -7,8 +7,8 @@
  */
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import ContactListScreen from './ContactListScreen';
-import AddContactScreen from './AddContactScreen';
+import ContactListScreen from './screens/ContactListScreen';
+import AddContactScreen from './screens/AddContactScreen';
 
 const RootNavigator = createStackNavigator({
   Main: {

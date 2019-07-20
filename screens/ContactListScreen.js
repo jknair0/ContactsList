@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import {
   Container, Content, Fab, Icon,
 } from 'native-base';
-import ContactList from './contact/ContactList';
+import ContactList from '../contact/ContactList';
 
 export default class ContactListScreen extends React.Component {
     static navigationOptions = {
