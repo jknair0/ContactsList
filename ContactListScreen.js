@@ -4,7 +4,6 @@ import {
   Container, Content, Fab, Icon,
 } from 'native-base';
 import ContactList from './contact/ContactList';
-import ContactEntity from './contact/ContactEntity';
 
 export default class ContactListScreen extends React.Component {
     static navigationOptions = {
@@ -12,10 +11,7 @@ export default class ContactListScreen extends React.Component {
     };
 
     state = {
-      contacts: [
-        new ContactEntity('Jaya Krishnan Nair', '+91', 1234567890),
-        new ContactEntity('Oxford University', '+91', 1987654321),
-      ],
+      contacts: [],
     };
 
     onContactAdded = (contact) => {
@@ -25,7 +21,7 @@ export default class ContactListScreen extends React.Component {
           ...contacts, contact,
         ],
       });
-    }
+    };
 
 
     render() {
