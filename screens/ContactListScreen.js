@@ -3,7 +3,6 @@ import { StyleSheet, View, Alert } from 'react-native';
 import {
   Container, Content, Fab, Icon,
 } from 'native-base';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ContactList from '../contact/ContactList';
@@ -58,6 +57,6 @@ const styles = StyleSheet.create({
   fabIcon: { fontSize: 24, color: 'white' },
 });
 
-const mapReduxStateToProps = ({ contacts }) => ({ contacts });
+const mapStateToProps = ({ contacts }) => ({ contacts });
 
-export default connect(mapReduxStateToProps)(ContactListScreen);
+export default connect(mapStateToProps)(ContactListScreen);
