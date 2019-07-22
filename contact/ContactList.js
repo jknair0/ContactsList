@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
-import Contact from './Contact';
+import Contact from './ContactItem';
 import ContactEntity from './ContactEntity';
 
 const ContactList = ({ contactList = [] }) => (

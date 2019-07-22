@@ -4,11 +4,14 @@ import {
   Container, Content, Form, Input, Item, Button,
 } from 'native-base';
 import {
-  Text, StyleSheet, Alert,
+  Text, StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ContactEntity from '../contact/ContactEntity';
+import { addContact } from '../contact/reducers/actions';
 
-export default class AddContactScreen extends React.Component {
+class AddContactScreen extends React.Component {
     static navigationOptions = {
       title: 'Add Contact',
     };
@@ -20,12 +23,8 @@ export default class AddContactScreen extends React.Component {
 
     onCreate() {
       const { name, phNumber } = this.state;
-      const { navigation } = this.props;
-      if (name.length !== 0 && phNumber.length !== 0) {
-        const contact = new ContactEntity(name, '+91', phNumber);
-        const onContactAddedCallback = navigation.getParam('onContactAdded', () => {});
-        onContactAddedCallback(contact);
-      }
+      const { addContact, navigation } = this.props;
+      addContact(new ContactEntity(name, '+1', phNumber));
       navigation.goBack();
     }
 
@@ -59,3 +58,9 @@ export default class AddContactScreen extends React.Component {
 const styles = StyleSheet.create({
   createButton: { justifyContent: 'center', margin: 8 },
 });
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ addContact }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(AddContactScreen);

@@ -1,11 +1,16 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import {
   Container, Content, Fab, Icon,
 } from 'native-base';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ContactList from '../contact/ContactList';
+import ContactEntity from '../contact/ContactEntity';
 
-export default class ContactListScreen extends React.Component {
+
+class ContactListScreen extends React.Component {
     static navigationOptions = {
       title: 'Contact List',
     };
@@ -25,19 +30,14 @@ export default class ContactListScreen extends React.Component {
 
 
     render() {
-      const { navigation } = this.props;
-      const { contacts } = this.state;
+      const { navigation, contacts } = this.props;
       return (
         <Container>
           <Content padder>
             <ContactList contactList={contacts} />
           </Content>
           <View style={{ flex: 1 }}>
-            <Fab onPress={() => navigation.navigate('AddContact',
-              {
-                onContactAdded: this.onContactAdded,
-              })}
-            >
+            <Fab onPress={() => navigation.navigate('AddContact', { onContactAdded: this.onContactAdded })}>
               <Icon name="add" style={styles.fabIcon} />
             </Fab>
           </View>
@@ -46,6 +46,18 @@ export default class ContactListScreen extends React.Component {
     }
 }
 
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(ContactEntity),
+};
+
+ContactList.defaultProps = {
+  contacts: [],
+};
+
 const styles = StyleSheet.create({
   fabIcon: { fontSize: 24, color: 'white' },
 });
+
+const mapReduxStateToProps = ({ contacts }) => ({ contacts });
+
+export default connect(mapReduxStateToProps)(ContactListScreen);
