@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ContactEntity from '../contact/ContactEntity';
-import { addContact } from '../contact/reducers/actions';
+import ContactEntity from '../ContactEntity';
+import { addContact } from '../reducers/actions';
 
-class AddContactScreen extends React.Component {
+export class AddContactScreen extends React.Component {
     static navigationOptions = {
       title: 'Add Contact',
     };
@@ -58,9 +58,3 @@ class AddContactScreen extends React.Component {
 const styles = StyleSheet.create({
   createButton: { justifyContent: 'center', margin: 8 },
 });
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({ addContact }, dispatch)
-);
-
-export default connect(null, mapDispatchToProps)(AddContactScreen);

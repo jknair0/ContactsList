@@ -1,28 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 import React from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
-import ContactListScreen from './screens/ContactListScreen';
-import AddContactScreen from './screens/AddContactScreen';
 import RootReducer from './reducer/RootReducer';
+import AddContactContainer from './contacts/addcontact/AddContactContainer';
+import ContactListContainer from './contacts/contactlist/ContactListContainer';
 
 
 const RootNavigator = createStackNavigator({
   Main: {
-    screen: ContactListScreen,
+    screen: ContactListContainer,
   },
   AddContact: {
-    screen: AddContactScreen,
+    screen: AddContactContainer,
   },
 });
 const AppContainer = createAppContainer(RootNavigator);
@@ -38,16 +31,13 @@ const store = createStore(persistedReducer);
 
 const persistor = persistStore(store);
 
-class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <AppContainer />
-        </PersistGate>
-      </Provider>
-    );
-  }
-}
+
+const App = () => (
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <AppContainer />
+    </PersistGate>
+  </Provider>
+);
 
 export default App;

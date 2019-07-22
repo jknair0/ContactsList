@@ -8,10 +8,10 @@ function addContact(contact) {
   };
 }
 
-function removeContact(uuid) {
+function removeContact(contact) {
   return {
     type: REMOVE_CONTACT,
-    value: uuid,
+    value: contact.uuid,
   };
 }
 

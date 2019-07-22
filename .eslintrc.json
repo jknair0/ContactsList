@@ -26,7 +26,7 @@
         "react-redux"
     ],
     "rules": {
-        "react/self-closing-tags": 1,
+        "react/self-closing-tags": 0,
         "object-shorthand": 1,
         "no-use-before-define": 0,
         "react/jsx-tag-spacing": 1,
@@ -38,6 +38,7 @@
         "no-unused-vars": ["warn", {"ignore": ["navigationOptions"]}],
         "react/prop-types": ["warn", { "ignore": ["navigation"] }],
         "react/destructuring-assignment": 1,
-        "react-redux/no-unused-prop-types": 2
+        "react-redux/no-unused-prop-types": 2,
+        "react-redux/mapDispatchToProps-returns-object": 1
     }
 }

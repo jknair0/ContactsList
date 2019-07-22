@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Icon, Button } from 'native-base';
+import { Button, Icon } from 'native-base';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import ContactEntity from './ContactEntity';
-import { removeContact } from './reducers/actions';
+import ContactEntity from '../ContactEntity';
 
 
-class ContactItem extends Component {
+export default class ContactListItem extends Component {
   render() {
-    const { contact } = this.props;
+    const { contact , onDeleteClicked } = this.props;
     const {
-      uuid, name, countryCode, phoneNumber,
+      name, countryCode, phoneNumber,
     } = contact;
     return (
       <View style={styles.root}>
@@ -23,27 +20,23 @@ class ContactItem extends Component {
             <Text style={styles.phNumber}>{phoneNumber}</Text>
           </View>
         </View>
-        <Button light onPress={() => this.onDeleteClicked(uuid)}>
+        <Button light onPress={() => onDeleteClicked(contact)}>
           <Icon name="trash" style={styles.deleteContact} />
         </Button>
       </View>
     );
   }
-
-  onDeleteClicked(uuid) {
-    const { removeContact } = this.props;
-    removeContact(uuid);
-  }
 }
 
 
-ContactItem.propTypes = {
-  contact: PropTypes.instanceOf(ContactEntity),
+ContactListItem.propTypes = {
+  contact: PropTypes.instanceOf(ContactEntity).isRequired,
+  onDeleteClicked: PropTypes.func,
 };
 
-ContactItem.defaultProps = {
-  contact: ContactEntity('No Name', '+91', 1234567890),
-};
+ContactListItem.defaultProps = {
+  onDeleteClicked: () => {},
+}
 
 const styles = StyleSheet.create({
   root: {
@@ -73,11 +66,3 @@ const styles = StyleSheet.create({
     color: 'red',
   },
 });
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    removeContact,
-  }, dispatch)
-);
-
-export default connect(null, mapDispatchToProps)(ContactItem);
