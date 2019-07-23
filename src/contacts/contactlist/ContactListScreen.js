@@ -1,16 +1,28 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import {
-  Container, Content, Fab, Icon,
+  Container, Content, Fab, Icon, Button, Text,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import ContactsFlatList from '../components/ContactsFlatList';
 import ContactEntity from '../ContactEntity';
 
 export default class ContactListScreen extends React.Component {
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
       title: 'Contact List',
-    };
+      headerRight: (
+        <Button transparent onPress={navigation.getParam('navigateCircleciScreen')}>
+          <Text>Images</Text>
+        </Button>
+      ),
+    });
+
+    componentDidMount(): void {
+      const { navigation } = this.props;
+      navigation.setParams({
+        navigateCircleciScreen: () => { navigation.navigate('MainScreen'); },
+      });
+    }
 
     render() {
       const { navigation, contacts, removeContact } = this.props;

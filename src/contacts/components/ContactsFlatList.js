@@ -19,7 +19,7 @@ class ContactsFlatList extends React.Component {
     // noinspection RequiredAttributes
     return (
       <FlatList
-        data={contactList.map((contact, index) => ({ key: `${index}`, value: contact }))}
+        data={contactList.map(contact => ({ key: `${contact.uuid}`, value: contact }))}
         renderItem={({ item }) => ContactsFlatList.contactAdapter(item.value, onDeleteClicked)}
       />
     );

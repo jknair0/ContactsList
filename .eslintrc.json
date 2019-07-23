@@ -35,10 +35,14 @@
         "react/prefer-stateless-function": 1,
         "react/jsx-filename-extension": 0,
         "no-shadow": 1,
+        "object-curly-spacing": 1,
         "no-unused-vars": ["warn", {"ignore": ["navigationOptions"]}],
         "react/prop-types": ["warn", { "ignore": ["navigation"] }],
         "react/destructuring-assignment": 1,
         "react-redux/no-unused-prop-types": 2,
-        "react-redux/mapDispatchToProps-returns-object": 1
+        "react-redux/mapDispatchToProps-returns-object": 1,
+        "react/no-unused-state": 1,
+        "key-spacing": 1,
+        "react/sort-comp": 1
     }
 }
