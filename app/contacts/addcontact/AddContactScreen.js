@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { Button, Container, Content, Form, Input, Item, } from 'native-base';
-import { StyleSheet, Text, } from 'react-native';
+import {
+  Button, Container, Content, Form, Input, Item,
+} from 'native-base';
+import { StyleSheet, Text } from 'react-native';
 import ContactEntity from '../ContactEntity';
 
 export class AddContactScreen extends React.Component {
@@ -28,16 +30,20 @@ export class AddContactScreen extends React.Component {
         <Content>
           <Form>
             <Item>
-              <Input keyboardType="default"
-                     placeholder="Enter Name"
-                     onChangeText={text => this.setState({ name: text })}
-                     value={name}/>
+              <Input
+                keyboardType="default"
+                placeholder="Enter Name"
+                onChangeText={text => this.setState({ name: text })}
+                value={name}
+              />
             </Item>
             <Item>
-              <Input keyboardType="phone-pad"
-                     placeholder="Enter Mobile Number"
-                     onChangeText={text => this.setState({ phNumber: text })}
-                     value={phNumber}/>
+              <Input
+                keyboardType="phone-pad"
+                placeholder="Enter Mobile Number"
+                onChangeText={text => this.setState({ phNumber: text })}
+                value={phNumber}
+              />
             </Item>
           </Form>
           <Button
