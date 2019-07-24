@@ -6,9 +6,9 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import RootReducer from './reducer/RootReducer';
-import AddContactContainer from './src/contacts/addcontact/AddContactContainer';
-import ContactListContainer from './src/contacts/contactlist/ContactListContainer';
-import MainScreen from './src/circleciclient/MainScreen';
+import AddContactContainer from './app/contacts/addcontact/AddContactContainer';
+import ContactListContainer from './app/contacts/contactlist/ContactListContainer';
+import MainScreen from './app/circleciclient/MainScreen';
 
 
 const CircleCiClientNavigator = createBottomTabNavigator({
@@ -18,17 +18,17 @@ const CircleCiClientNavigator = createBottomTabNavigator({
 });
 
 const RootNavigator = createStackNavigator({
-  BottomTabNavigator: {
-    screen: CircleCiClientNavigator,
-    navigationOptions: {
-      header: null,
-    },
-  },
   Main: {
     screen: ContactListContainer,
   },
   AddContact: {
     screen: AddContactContainer,
+  },
+  BottomTabNavigator: {
+    screen: CircleCiClientNavigator,
+    navigationOptions: {
+      header: null,
+    },
   },
 });
 

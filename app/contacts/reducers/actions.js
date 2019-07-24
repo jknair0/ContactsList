@@ -16,11 +16,6 @@ function removeContact(contact) {
 }
 
 export {
-  ADD_CONTACT,
-  REMOVE_CONTACT,
-};
-
-export {
   addContact,
   removeContact,
 };
