@@ -4,14 +4,14 @@ const REMOVE_CONTACT = 'REMOVE_CONTACT';
 function addContact(contact) {
   return {
     type: ADD_CONTACT,
-    value: contact,
+    payload: contact,
   };
 }
 
 function removeContact(contact) {
   return {
     type: REMOVE_CONTACT,
-    value: contact.uuid,
+    payload: contact.uuid,
   };
 }
 
