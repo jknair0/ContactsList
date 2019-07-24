@@ -1,47 +1,48 @@
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
-import {
-  Container, Content, Fab, Icon, Button, Text,
-} from 'native-base';
+import { StyleSheet, View } from 'react-native';
+import { Button, Container, Content, Fab, Icon, Text, } from 'native-base';
 import PropTypes from 'prop-types';
 import ContactsFlatList from '../components/ContactsFlatList';
 import ContactEntity from '../ContactEntity';
 
 export default class ContactListScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => ({
-      title: 'Contact List',
-      headerRight: (
-        <Button transparent onPress={navigation.getParam('navigateCircleciScreen')}>
-          <Text>Images</Text>
-        </Button>
-      ),
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Contact List',
+    headerRight: (
+      <Button transparent onPress={navigation.getParam('navigateCircleciScreen')}>
+        <Text>Images</Text>
+      </Button>
+    ),
+  });
+
+  componentDidMount(): void {
+    const { navigation } = this.props;
+    navigation.setParams({
+      navigateCircleciScreen: () => {
+        navigation.navigate('MainScreen');
+      },
     });
+  }
 
-    componentDidMount(): void {
-      const { navigation } = this.props;
-      navigation.setParams({
-        navigateCircleciScreen: () => { navigation.navigate('MainScreen'); },
-      });
-    }
-
-    render() {
-      const { navigation, contacts, removeContact } = this.props;
-      return (
-        <Container>
-          <Content padder>
-            <ContactsFlatList
-              contactList={contacts}
-              onDeleteClicked={contact => removeContact(contact)}
-            />
-          </Content>
-          <View style={{ flex: 1 }}>
-            <Fab onPress={() => navigation.navigate('AddContact', { onContactAdded: this.onContactAdded })}>
-              <Icon name="add" style={styles.fabIcon} />
-            </Fab>
-          </View>
-        </Container>
-      );
-    }
+  render() {
+    const { navigation, contacts, removeContact } = this.props;
+    return (
+      <Container>
+        <Content padder>
+          <ContactsFlatList
+            contactList={contacts}
+            onDeleteClicked={contact => removeContact(contact)}
+          />
+        </Content>
+        <View style={{ flex: 1 }}>
+          <Fab onPress={() => navigation.navigate('AddContact',
+            { onContactAdded: this.onContactAdded })}>
+            <Icon name="add" style={styles.fabIcon}/>
+          </Fab>
+        </View>
+      </Container>
+    );
+  }
 }
 
 ContactListScreen.propTypes = {
@@ -50,7 +51,8 @@ ContactListScreen.propTypes = {
 };
 
 ContactListScreen.defaultProps = {
-  removeContact: () => {},
+  removeContact: () => {
+  },
 };
 
 const styles = StyleSheet.create({

@@ -7,7 +7,7 @@ import ContactEntity from '../ContactEntity';
 
 export default class ContactListItem extends Component {
   render() {
-    const { contact , onDeleteClicked } = this.props;
+    const { contact, onDeleteClicked } = this.props;
     const {
       name, countryCode, phoneNumber,
     } = contact;
@@ -21,7 +21,7 @@ export default class ContactListItem extends Component {
           </View>
         </View>
         <Button light onPress={() => onDeleteClicked(contact)}>
-          <Icon name="trash" style={styles.deleteContact} />
+          <Icon name="trash" style={styles.deleteContact}/>
         </Button>
       </View>
     );
@@ -35,8 +35,9 @@ ContactListItem.propTypes = {
 };
 
 ContactListItem.defaultProps = {
-  onDeleteClicked: () => {},
-}
+  onDeleteClicked: () => {
+  },
+};
 
 const styles = StyleSheet.create({
   root: {

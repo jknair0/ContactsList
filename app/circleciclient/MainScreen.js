@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  Text, SafeAreaView, View, Image, StyleSheet, ScrollView, FlatList,
-} from 'react-native';
+import { FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, } from 'react-native';
 import axios from 'axios';
-import { Button, Title } from 'native-base';
+import { Title } from 'native-base';
 import { circleciApiKey } from '../../ApiToken';
 
 export default class MainScreen extends React.Component {
@@ -19,6 +17,16 @@ export default class MainScreen extends React.Component {
     projects: [],
   };
 
+  static projectsAdapter(data) {
+    const array = data.split('/');
+    const projectName = array[array.length - 1];
+    return (
+      <Text style={styles.projectItem}>
+        {projectName}
+      </Text>
+    );
+  }
+
   componentDidMount(): void {
     this.fetchFromApi();
   }
@@ -27,29 +35,19 @@ export default class MainScreen extends React.Component {
     const { navigation } = this.props;
     const url = `https://circleci.com/api/v1.1/me?circle-token=${circleciApiKey}`;
     axios.get(url)
-      .then((output) => {
-        const root = output.data.identities.bitbucket;
-        const { projects } = output.data;
-        const { name: userName, avatar_url: avatarUrl } = root;
-        this.setState({
-          response: JSON.stringify(Object.keys(root)),
-          userImageUrl: avatarUrl,
-          userName,
-          projects,
-        });
-      }).catch((error) => {
-        this.setState({ response: `error: ${JSON.stringify(error)}` });
+    .then((output) => {
+      const root = output.data.identities.bitbucket;
+      const { projects } = output.data;
+      const { name: userName, avatar_url: avatarUrl } = root;
+      this.setState({
+        response: JSON.stringify(Object.keys(root)),
+        userImageUrl: avatarUrl,
+        userName,
+        projects,
       });
-  }
-
-  static projectsAdapter(data) {
-    const array = data.split('/');
-    const projectName = array[array.length - 1];
-    return (
-      <Text style={styles.projectItem}>
-        { projectName }
-      </Text>
-    );
+    }).catch((error) => {
+      this.setState({ response: `error: ${JSON.stringify(error)}` });
+    });
   }
 
   render() {
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
   title: {
     margin: 8,
   },
-  projectItem:{
+  projectItem: {
     padding: 8,
     backgroundColor: '#efefef',
   },

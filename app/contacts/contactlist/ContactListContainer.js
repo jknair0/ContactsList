@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeContact } from '../reducers/actions';
+import { removeContact } from '../actions/actions';
 import ContactListScreen from './ContactListScreen';
 
 const mapStateToProps = ({ contacts }) => ({ contacts });

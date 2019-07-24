@@ -1,4 +1,5 @@
-import { ADD_CONTACT, REMOVE_CONTACT } from './actions';
+import { ADD_CONTACT, REMOVE_CONTACT } from '../actions/types';
+
 
 const INITIAL_STATE = [];
 

@@ -1,5 +1,4 @@
-const ADD_CONTACT = 'ADD_CONTACT';
-const REMOVE_CONTACT = 'REMOVE_CONTACT';
+import { ADD_CONTACT, REMOVE_CONTACT } from './types';
 
 function addContact(contact) {
   return {
