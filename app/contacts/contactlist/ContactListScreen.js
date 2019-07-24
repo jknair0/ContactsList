@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   Button, Container, Content, Fab, Icon, Text,
 } from 'native-base';
@@ -36,13 +36,11 @@ export default class ContactListScreen extends React.Component {
             onDeleteClicked={contact => removeContact(contact)}
           />
         </Content>
-        <View style={{ flex: 1 }}>
-          <Fab onPress={() => navigation.navigate('AddContact',
-            { onContactAdded: this.onContactAdded })}
-          >
-            <Icon name="add" style={styles.fabIcon} />
-          </Fab>
-        </View>
+        <Fab onPress={() => navigation.navigate('AddContact',
+          { onContactAdded: this.onContactAdded })}
+        >
+          <Icon name="add" style={styles.fabIcon} />
+        </Fab>
       </Container>
     );
   }
