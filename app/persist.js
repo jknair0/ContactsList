@@ -1,7 +1,6 @@
-import storage from 'redux-persist/es/storage';
-import { persistReducer } from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 import { createStore } from 'redux';
-import { persistStore } from 'redux-persist/es/persistStore';
+import { persistStore, persistReducer } from 'redux-persist';
 import RootReducer from './reducer';
 
 const persistConfig = {
