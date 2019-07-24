@@ -14,7 +14,7 @@ export default class ContactListScreen extends React.Component {
     title: 'Contact List',
     headerRight: (
       <Button transparent onPress={navigation.getParam(CIRCLECI_CLIENT_SCREEN)}>
-        <Text>Images</Text>
+        <Text>CI client</Text>
       </Button>
     ),
   });
