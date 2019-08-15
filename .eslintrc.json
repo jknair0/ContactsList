@@ -43,6 +43,9 @@
         "react-redux/mapDispatchToProps-returns-object": 1,
         "react/no-unused-state": 1,
         "key-spacing": 1,
-        "react/sort-comp": 1
+        "react/sort-comp": 1,
+        "space-before-blocks": 1,
+        "no-trailing-spaces": 1,
+        "import/prefer-default-export": 1
     }
 }
