@@ -24,4 +24,5 @@ function removingContact(isRemoving){
 export {
   addContact,
   removeContact,
+  removingContact,
 };

@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import {
-  Button, Container, Content, Fab, Icon, Text,
-} from 'native-base';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { Button, Container, Content, Fab, Icon, Text, } from 'native-base';
 import PropTypes from 'prop-types';
 import ContactsFlatList from '../components/ContactsFlatList';
 import ContactEntity from '../ContactEntity';
@@ -32,15 +30,21 @@ export default class ContactListScreen extends React.Component {
     return (
       <Container>
         <Content padder>
-          { waiting && (<Text>Loading</Text>) }
           <ContactsFlatList
             contactList={contacts}
             onDeleteClicked={contact => removeContact(contact)}
           />
         </Content>
-        <Fab onPress={() => navigation.navigate('AddContact')}>
-          <Icon name="add" style={styles.fabIcon} />
+        <Fab onPress={() => navigation.navigate('AddContact',
+          { onContactAdded: this.onContactAdded })}
+        >
+          <Icon name="add" style={styles.fabIcon}/>
         </Fab>
+        {waiting && (
+          <View style={{ flex: 1 }}>
+            <ActivityIndicator/>
+          </View>
+        )}
       </Container>
     );
   }
