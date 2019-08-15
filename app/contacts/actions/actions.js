@@ -1,4 +1,4 @@
-import { ADD_CONTACT, REMOVE_CONTACT } from './types';
+import { ADD_CONTACT, REMOVE_CONTACT, WAITING } from './types';
 
 function addContact(contact) {
   return {
@@ -11,6 +11,13 @@ function removeContact(contact) {
   return {
     type: REMOVE_CONTACT,
     payload: contact.uuid,
+  };
+}
+
+function removingContact(isRemoving){
+  return {
+    type: WAITING,
+    payload: isRemoving,
   };
 }
 

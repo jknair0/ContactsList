@@ -27,10 +27,12 @@ export default class ContactListScreen extends React.Component {
   }
 
   render() {
-    const { navigation, contacts, removeContact } = this.props;
+    const { navigation, contactsState, removeContact } = this.props;
+    const { contacts, waiting } = contactsState;
     return (
       <Container>
         <Content padder>
+          { waiting && (<Text>Loading</Text>) }
           <ContactsFlatList
             contactList={contacts}
             onDeleteClicked={contact => removeContact(contact)}
@@ -45,11 +47,18 @@ export default class ContactListScreen extends React.Component {
 }
 
 ContactListScreen.propTypes = {
-  contacts: PropTypes.arrayOf(ContactEntity).isRequired,
+  contactsState: PropTypes.objectOf({
+    contacts: PropTypes.arrayOf(ContactEntity),
+    waiting: PropTypes.bool,
+  }),
   removeContact: PropTypes.func,
 };
 
 ContactListScreen.defaultProps = {
+  contactsState: {
+    contacts: [],
+    waiting: false,
+  },
   removeContact: () => {
   },
 };

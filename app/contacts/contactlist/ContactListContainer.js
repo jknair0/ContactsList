@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeContact } from '../actions/actions';
+import { removeContactAsync } from '../actions/thunkActions';
 import ContactListScreen from './ContactListScreen';
 
-const mapStateToProps = ({ contacts }) => ({ contacts });
+const mapStateToProps = state => ({ contactsState: state });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  removeContact,
+  removeContact: removeContactAsync,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactListScreen);
