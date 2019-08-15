@@ -38,7 +38,7 @@ export default class ContactListScreen extends React.Component {
             onDeleteClicked={contact => removeContact(contact)}
           />
         </Content>
-        <Fab onPress={() => navigation.navigate(':w')}>
+        <Fab onPress={() => navigation.navigate('AddContact')}>
           <Icon name="add" style={styles.fabIcon} />
         </Fab>
       </Container>
